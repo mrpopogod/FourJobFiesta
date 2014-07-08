@@ -1,7 +1,6 @@
 /*
  * (C) 2014 Agilysys NV, LLC.  All Rights Reserved.  Confidential Information of Agilysys NV, LLC.
  */
-
 package ffvrandom;
 
 import java.util.ArrayList;
@@ -21,6 +20,12 @@ public class FFVRandom
      */
     public static void main(String[] args)
     {
+        if (args.length > 0 && args[0].equals("bravelyDefault"))
+        {
+            bravelyDefault();
+            return;
+        }
+
         List<String> windJobs = Arrays.asList("Knight", "Monk", "Thief", "White Mage", "Black Mage", "Blue Mage");
         List<String> waterJobs = Arrays.asList("Mystic Knight", "Berserker", "Red Mage", "Time Mage", "Summoner");
         List<String> fireJobs = Arrays.asList("Ninja", "Geomancer", "Beastmaster", "Ranger", "Bard");
@@ -105,4 +110,16 @@ public class FFVRandom
         }
     }
 
+    private static void bravelyDefault()
+    {
+        List<String> allJobs = Arrays.asList("Freelancer", "Monk", "White Mage", "Black Mage", "Knight", "Thief", "Merchant", "Spell Fencer", "Time Mage", "Ranger", "Summoner", "Valkyrie", "Red Mage", "Salve-Maker", "Performer", "Pirate", "Ninja", "Swordmaster", "Arcanist", "Spiritmaster", "Templar", "Dark Knight", "Vampire", "Conjurer");
+        List<String> jobList = new ArrayList<>(allJobs);
+        Random rand = new Random();
+        for (int i = 0; i < 4; i++)
+        {
+            String job = jobList.get(rand.nextInt(jobList.size()));
+            jobList.remove(job);
+            System.out.println("Job #" + i + ": " + job);
+        }
+    }
 }
